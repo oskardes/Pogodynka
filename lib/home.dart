@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
     final data1 = await _getTemp();
     final data2 = await _getWet();
     final data3 = await _getSunny();
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     return [data1, data2, data3];
   }
 
@@ -84,7 +84,19 @@ class _HomeState extends State<Home> {
             case ConnectionState.done:
             default:
               if (snapshot.hasError) {
-                return Text(':( ${snapshot.error}');
+                return Column(
+                  children: [
+                    Text(' ${snapshot.error} Try refresh'),
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            time = DateTime.now();
+                            dataFuture();
+                          });
+                        },
+                        child: const Text("Refresh"))
+                  ],
+                );
               } else if (snapshot.hasData) {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -122,7 +134,7 @@ class _HomeState extends State<Home> {
                       onPressed: () {
                         setState(() {
                           time = DateTime.now();
-                          _future;
+                          dataFuture();
                         });
                       },
                       child: const Text('Refresh'),

@@ -28,12 +28,13 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.2
+  fl_chart: ^0.55.0
   flutter:
     sdk: flutter
   google_fonts: ^3.0.1
-  http: ^0.13.4
   intl: ^0.17.0
   mysql1: ^0.19.2
+  syncfusion_flutter_charts: ^20.1.61
 
 dev_dependencies:
   flutter_lints: ^2.0.0
