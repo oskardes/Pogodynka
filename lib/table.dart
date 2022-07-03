@@ -19,6 +19,7 @@ class _DatabaseState extends State<Database> {
   List<Map> all = [];
   int _currentSortColumn = 0;
   bool _isSortAsc = true;
+  Future? _future;
 
   Future<List<dynamic>> _selectTemp() async {
     await db.getConnection().then((conn) {
@@ -108,21 +109,27 @@ class _DatabaseState extends State<Database> {
     }
   }
 
-  Future<dynamic> dataSelect() async {
+  Future<dynamic> _dataSelect() async {
     final data1 = await _selectTemp();
     final data2 = await _selectWet();
     final data3 = await _selectSunny();
     final data4 = await _selectData();
     final data5 = await _selectTime();
-    var data6 = makeList();
+    final data6 = makeList();
     await Future.delayed(const Duration(seconds: 2));
     return [data1, data2, data3, data4, data5, data6];
+  }
+
+  void updateData() {
+    setState(() {
+      _future = _dataSelect();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: dataSelect(),
+        future: _dataSelect(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
@@ -135,9 +142,11 @@ class _DatabaseState extends State<Database> {
                 return Center(
                   child: Column(
                     children: [
-                      Text(',${snapshot.error}. Try refresh'),
+                      Text(' ${snapshot.error}. Try refresh'),
                       ElevatedButton(
-                        onPressed: () => dataSelect(),
+                        onPressed: () => setState(() {
+                          _future;
+                        }),
                         child: const Text('Refresh'),
                       ),
                     ],
@@ -148,7 +157,9 @@ class _DatabaseState extends State<Database> {
                   children: [
                     _createDataTable(),
                     ElevatedButton(
-                      onPressed: () => dataSelect(),
+                      onPressed: () => setState(() {
+                        _future;
+                      }),
                       child: const Text('Refresh'),
                     ),
                   ],
@@ -158,7 +169,9 @@ class _DatabaseState extends State<Database> {
                   children: [
                     const Text("No data"),
                     ElevatedButton(
-                      onPressed: () => dataSelect(),
+                      onPressed: () => setState(() {
+                        _future;
+                      }),
                       child: const Text('Refresh'),
                     ),
                   ],

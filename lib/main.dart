@@ -15,7 +15,7 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> {
-  int _currentIndex = 2;
+  int _currentIndex = 0;
 
   final List<Widget> pages = [
     const Home(),

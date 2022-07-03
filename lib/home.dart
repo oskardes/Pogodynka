@@ -20,6 +20,7 @@ class _HomeState extends State<Home> {
   var something = '';
 
   Future? _future;
+  Future? _future2;
 
   Future<double> _getTemp() async {
     await db.getConnection().then((conn) {
@@ -61,7 +62,7 @@ class _HomeState extends State<Home> {
     final data1 = await _getTemp();
     final data2 = await _getWet();
     final data3 = await _getSunny();
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 2));
     return [data1, data2, data3];
   }
 
@@ -69,6 +70,12 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     _future = dataFuture();
+  }
+
+  void updateFuture() {
+    setState(() {
+      _future2 = dataFuture();
+    });
   }
 
   @override
@@ -86,12 +93,13 @@ class _HomeState extends State<Home> {
               if (snapshot.hasError) {
                 return Column(
                   children: [
-                    Text(' ${snapshot.error} Try refresh'),
+                    Text('${snapshot.error} Try refresh'),
                     ElevatedButton(
                         onPressed: () {
-                          setState(() {
+                          setState(() async {
+                            _future2;
+                            await Future.delayed(const Duration(seconds: 2));
                             time = DateTime.now();
-                            dataFuture();
                           });
                         },
                         child: const Text("Refresh"))
