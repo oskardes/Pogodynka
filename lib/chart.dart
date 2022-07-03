@@ -205,24 +205,3 @@ class _ChartState extends State<Chart> {
     );
   }
 }
-//   @override
-//   Widget build(BuildContext context) {
-//     return FutureBuilder(
-//         future: dataSelect(),
-//         builder: ((context, snapshot) {
-//           return LineChart(
-//             LineChartData(minX: 0, maxX: 11, minY: 0, maxY: 45, lineBarsData: [
-//               LineChartBarData(spots: [
-//                 const FlSpot(0, 3),
-//                 const FlSpot(2.6, 2),
-//                 const FlSpot(4.9, 5),
-//                 const FlSpot(6.8, 2.5),
-//                 const FlSpot(8, 4),
-//                 const FlSpot(9.5, 3),
-//                 const FlSpot(11, 4),
-//               ])
-//             ]),
-//           );
-//         }));
-//   }
-// }

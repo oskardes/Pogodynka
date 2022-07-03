@@ -12,58 +12,42 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   var db = Mysql();
-
-  DateTime time = DateTime.now();
+  Map all = {};
   double temp = 0;
   double sunny = 0;
   double wet = 0;
+
+  DateTime time = DateTime.now();
   var something = '';
 
   Future? _future;
   Future? _future2;
 
-  Future<double> _getTemp() async {
+  Future<Map> _getAll() async {
     await db.getConnection().then((conn) {
-      String sql = 'select val from nodemcu_table order by id desc limit 1';
+      String sql =
+          'select val, val2, val3 from nodemcu_table order by id desc limit 1';
       conn.query(sql).then((results) {
+        all.clear();
         for (var row in results) {
-          temp = row[0];
+          all = {
+            'temp': row[0],
+            'wilg': row[1],
+            'nasl': row[2],
+          };
         }
+        temp = all['temp'];
+        wet = all['wilg'];
+        sunny = all['nasl'];
       });
     });
-    return temp;
-  }
-
-  Future<double> _getWet() async {
-    await db.getConnection().then((conn) {
-      String sql = 'select val2 from nodemcu_table order by id desc limit 1';
-      conn.query(sql).then((results) {
-        for (var row in results) {
-          wet = row[0];
-        }
-      });
-    });
-    return wet;
-  }
-
-  Future<double> _getSunny() async {
-    await db.getConnection().then((conn) {
-      String sql = 'select val3 from nodemcu_table order by id desc limit 1';
-      conn.query(sql).then((results) {
-        for (var row in results) {
-          sunny = row[0];
-        }
-      });
-    });
-    return sunny;
+    return all;
   }
 
   Future<dynamic> dataFuture() async {
-    final data1 = await _getTemp();
-    final data2 = await _getWet();
-    final data3 = await _getSunny();
+    final all = await _getAll();
     await Future.delayed(const Duration(seconds: 2));
-    return [data1, data2, data3];
+    return [all];
   }
 
   @override
@@ -118,14 +102,14 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     Text(
-                      'Temperatura : $temp°C ',
+                      'Temperatura : $temp',
                       style: GoogleFonts.oxygen(
                         fontSize: 20,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
                     Text(
-                      'Wilgotność: $wet% ',
+                      'Wilgotność: $wet % ',
                       style: GoogleFonts.oxygen(
                         fontSize: 20,
                         fontWeight: FontWeight.w400,
