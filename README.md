@@ -1,16 +1,25 @@
-# pogodynka_am
+# WeatherAM
+Port app for mobile to show measurements from IOT controller and sensors. You can put anywhere small device and check some value like temperature, insolation and 
+humidity. Apps allow to check last measurement, which is refresh after 1 minute. Data from sensor can be shown with line chart and user can touch point and hint bar show
+hours of measurement and value. Furthermore, last but not least is datatable where are shown all measurment in well-visually way.
 
-A new Flutter project.
+## Technologies
+Project is created with:
+* Flutter
+* Mysql
+* package mysql1
+* package intl
+* package syncfusion_flutter_charts
 
-## Getting Started
+## Screen
+* Home view with last measurement
+![Home view](./screens/1.jpg)
 
-This project is a starting point for a Flutter application.
+* Chart view with all measurements
+![Chart view](./screens/2.jgp)
 
-A few resources to get you started if this is your first Flutter project:
+* Chart View with touch measurement and show hint
+![Chart View with hint](./screens/3.jpg)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Datatabale view to better visualization 
+![Datatable view](./screens/4.jpg)
