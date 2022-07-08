@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'Mysql.dart';
+import 'models/Mysql.dart';
 
 class Database extends StatefulWidget {
   const Database({Key? key}) : super(key: key);

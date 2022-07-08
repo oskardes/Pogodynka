@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:pogodynka_am/Mysql.dart';
+import 'package:pogodynka_am/models/Mysql.dart';
 import 'package:pogodynka_am/models/sunny.dart';
 import 'package:pogodynka_am/models/temp.dart';
 import 'package:pogodynka_am/models/wet.dart';
@@ -196,7 +196,10 @@ class _ChartState extends State<Chart> {
                     yValueMapper: (Sunny sunTemp, _) => sunTemp.sunny,
                     enableTooltip: true)
               ],
-              primaryXAxis: CategoryAxis(arrangeByIndex: true),
+              primaryXAxis: CategoryAxis(
+                arrangeByIndex: true,
+                isVisible: false,
+              ),
               legend: Legend(isVisible: true),
             ),
           ),
