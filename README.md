@@ -19,7 +19,7 @@ Project is created with:
 ![Chart view](./screens/2.jgp)
 
 * Chart View with touch measurement and show hint
-![Chart View with hint](./screens/3.jpg)
+![Chart View with hint](./screens/3.jgp)
 
 * Datatabale view to better visualization 
 ![Datatable view](./screens/4.jpg)
