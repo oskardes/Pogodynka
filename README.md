@@ -16,10 +16,10 @@ Project is created with:
 ![Home view](./screens/1.jpg)
 
 * Chart view with all measurements
-![Chart view](./screens/2.jgp)
+![Chart view](./screens/2.jpg)
 
 * Chart View with touch measurement and show hint
-![Chart View with hint](./screens/3.jgp)
+![Chart View with hint](./screens/3.jpg)
 
 * Datatabale view to better visualization 
 ![Datatable view](./screens/4.jpg)
