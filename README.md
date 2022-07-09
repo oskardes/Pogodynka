@@ -1,4 +1,4 @@
-# WeatherAM
+# Weather station
 Port app for mobile to show measurements from IOT controller and sensors. You can put anywhere small device and check some value like temperature, insolation and 
 humidity. Apps allow to check last measurement, which is refresh after 1 minute. Data from sensor can be shown with line chart and user can touch point and hint bar show
 hours of measurement and value. Furthermore, last but not least is datatable where are shown all measurment in well-visually way.
