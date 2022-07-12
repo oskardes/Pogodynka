@@ -24,8 +24,8 @@ class _DatabaseState extends State<Database> {
         for (var row in results) {
           Map something = {
             'id': row[0],
-            'temp': row[1],
-            'wilg': row[2],
+            'temp': row[2],
+            'wilg': row[1],
             'nasl': row[3],
             'data': row[4],
             'czas': row[5],

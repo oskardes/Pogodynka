@@ -27,7 +27,7 @@ class _ChartState extends State<Chart> {
 
   Future<List<dynamic>> _selectTemp() async {
     await db.getConnection().then((conn) {
-      String sql = 'select val from nodemcu_table';
+      String sql = 'select val2 from nodemcu_table';
       conn.query(sql).then((results) {
         temp.clear();
         for (var row in results) {
@@ -53,7 +53,7 @@ class _ChartState extends State<Chart> {
 
   Future<List<dynamic>> _selectWet() async {
     await db.getConnection().then((conn) {
-      String sql = 'select val2 from nodemcu_table';
+      String sql = 'select val from nodemcu_table';
       conn.query(sql).then((results) {
         wet.clear();
         for (var row in results) {

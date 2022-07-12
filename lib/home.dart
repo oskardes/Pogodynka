@@ -31,8 +31,8 @@ class _HomeState extends State<Home> {
         all.clear();
         for (var row in results) {
           all = {
-            'temp': row[0],
-            'wilg': row[1],
+            'temp': row[1],
+            'wilg': row[0],
             'nasl': row[2],
           };
         }
@@ -102,7 +102,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     Text(
-                      'Temperatura : $temp',
+                      'Temperatura : $temp ℃',
                       style: GoogleFonts.oxygen(
                         fontSize: 20,
                         fontWeight: FontWeight.w400,
